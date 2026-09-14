@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار الميداني: العجن والفصل - المحور الأول</title>
+    <style>
+        :root {
+            --primary-color: #2c5e3b;
+            --secondary-color: #558b2f;
+            --accent-color: #f4f6f0;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+
+        header p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .question-card {
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        .question-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            background: #f9fbf8;
+            border: 2px solid #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .option-item:hover {
+            border-color: var(--secondary-color);
+            background: #f1f8e9;
+        }
+
+        .option-item.selected {
+            border-color: var(--primary-color);
+            background: #e8f5e9;
+            font-weight: bold;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        button.action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button.action-btn:hover {
+            background-color: #1e3f27;
+        }
+
+        .result-container {
+            text-align: center;
+            display: none;
+        }
+
+        .result-container h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .score-box {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 20px 0;
+            direction: ltr;
+        }
+
+        .feedback-msg {
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            color: #444;
+            line-height: 1.6;
+            background: #f4f6f0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        .review-box {
+            text-align: right;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .review-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            border-right: 5px solid #ccc;
+            background: #fff;
+        }
+
+        .review-item.correct-ans {
+            border-right-color: #558b2f;
+            background: #f1f8e9;
+        }
+
+        .review-item.wrong-ans {
+            border-right-color: #c62828;
+            background: #ffebee;
+        }
+
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-container">
+            <img src="Logo100.jpg" alt="شعار مجموعة التكوين والتأطير" onerror="this.src='https://i.ibb.co/6P7q9z0/logo.jpg'">
+        </div>
+        <h1>🫒 المحور الأول: العجن ومرحلة الفصل</h1>
+        <p>مجموعة التكوين والتأطير — الحلقتان 5 و 6</p>
+    </header>
+
+    <div id="quiz-form"></div>
+
+    <div class="btn-container" id="nav-buttons">
+        <button class="action-btn" id="prev-btn" onclick="prevQuestion()" style="display: none;">السابق</button>
+        <div style="flex-grow: 1;"></div>
+        <button class="action-btn" id="next-btn" onclick="nextQuestion()">التالي</button>
+    </div>
+
+    <div class="result-container" id="result-screen">
+        <h2>نتيجة التقييم الميداني 🏆</h2>
+        <div class="score-box" id="score-display">0 / 6</div>
+        <div class="feedback-msg" id="feedback-text"></div>
+        <div class="result-buttons">
+            <button class="action-btn" onclick="restartQuiz()">إعادة الاختبار 🔄</button>
+            <button class="action-btn" style="background-color: #558b2f;" onclick="showReview()">مراجعة الإجابات الصحيحة 📖</button>
+        </div>
+        <div id="review-section" style="display: none;" class="review-box"></div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            title: "1. ما هو الهدف الأساسي من عملية العجن (Malaxage) لعجينة الزيتون؟",
+            options: [
+                "تسخين العجينة لأعلى درجات الحرارة لتعقيمها من البكتيريا.",
+                "تجميع قطرات الزيت الصغيرة المشتتة داخل العجينة لدمجها وتسهيل فصلها لاحقاً.",
+                "طحن النوى بشكل أكثر دقة داخل الحوض."
+            ],
+            correct: 1
+        },
+        {
+            title: "2. إذا لاحظت أن مردودية استخراج الزيت انخفضت قليلاً، وقرر العامل رفع حرارة العجن ومدته بشكل كبير، ما هو الأثر السلبي المؤكد لهذه الممارسة؟",
+            options: [
+                "تحسن طعم الزيت وارتفاع درجة البوليفينول.",
+                "أكسدة جزئية، تطاير النكهات العطرية، وانخفاض جودة الزيت مقابل فائدة طفيفة أو معدومة في الاستخلاص.",
+                "تبريد آلة الفصل تلقائياً."
+            ],
+            correct: 1
+        },
+        {
+            title: "3. ما هو المعيار الحقيقي لنجاح إدارة 'المردودية' في المعصرة؟",
+            options: [
+                "الحصول على أكبر كمية زيت بغض النظر عن لونه أو طعمه.",
+                "تحقيق التوازن الأمثل بين استخراج جيد للزيت + المحافظة على الجودة + تقليل الفاقد في المرجان والمخلفات الصلبة.",
+                "تقليل سرعة خط العصر إلى النصف."
+            ],
+            correct: 1
+        },
+        {
+            title: "4. بخصوص 'ماء الإضافة' أثناء مرحلة الفصل (النبذة المركزية أو الديكانتر)، ما هو التصرف الفني الصحيح؟",
+            options: [
+                "إضافته بكميات مفرطة وعشوائية لضمان خروج كل الزيت.",
+                "استعمال القدر المناسب فقط، لأن الزيادة غير الضرورية تخفض كفاءة الفصل وتزيد من فقد بعض مكونات وزيت النسالة.",
+                "عدم استعمال أي قطرة ماء نهائياً تحت أي ظرف."
+            ],
+            correct: 1
+        },
+        {
+            title: "5. أين يذهب 'الفاقد الحقيقي' الذي قد تخسره المعصرة دون انتباه؟",
+            options: [
+                "يتبخر في الهواء أثناء الطحن.",
+                "يضيع مع المرجان والمخلفات الصلبة نتيجة سوء ضبط الفصل أو الحرارة والماء.",
+                "يرجع تلقائياً إلى خزان الزيت الخام."
+            ],
+            correct: 1
+        },
+        {
+            title: "6. ما هي القاعدة الذهبية لمنظومة الفصل الناجحة؟",
+            options: [
+                "رفع الحرارة والماء معاً بصورة مطلقة.",
+                "ضبط الفصل كمنظومة متكاملة حسب خصائص الثمار والعجينة وتجهيزات الوحدة.",
+                "الاعتماد على الحظ وخبرة العامل البصرية دون مراقبة."
+            ],
+            correct: 1
+        }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+
+    const quizForm = document.getElementById('quiz-form');
+    const navButtons = document.getElementById('nav-buttons');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const resultScreen = document.getElementById('result-screen');
+    const scoreDisplay = document.getElementById('score-display');
+    const feedbackText = document.getElementById('feedback-text');
+    const reviewSection = document.getElementById('review-section');
+
+    function renderQuestion() {
+        quizForm.innerHTML = '';
+        const q = questions[currentQuestion];
+        let html = `<div class="question-card active">
+            <div class="question-title">${q.title}</div>
+            <div class="options-list">`;
+        
+        q.options.forEach((opt, idx) => {
+            const isSelected = userAnswers[currentQuestion] === idx ? 'selected' : '';
+            html += `<div class="option-item ${isSelected}" onclick="selectOption(${idx})">${opt}</div>`;
+        });
+
+        html += `</div></div>`;
+        quizForm.innerHTML = html;
+
+        prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
+        nextBtn.innerText = currentQuestion === questions.length - 1 ? 'إرسال وعرض النتيجة' : 'التالي';
+    }
+
+    function selectOption(optionIndex) {
+        userAnswers[currentQuestion] = optionIndex;
+        renderQuestion();
+    }
+
+    function nextQuestion() {
+        if (userAnswers[currentQuestion] === null) {
+            alert('الرجاء اختيار إجابة قبل الانتقال للسؤال التالي.');
+            return;
+        }
+
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            renderQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            renderQuestion();
+        }
+    }
+
+    function showResults() {
+        quizForm.style.display = 'none';
+        navButtons.style.display = 'none';
+        resultScreen.style.display = 'block';
+        reviewSection.style.display = 'none';
+
+        let score = 0;
+        userAnswers.forEach((ans, idx) => {
+            if (ans === questions[idx].correct) score++;
+        });
+
+        scoreDisplay.innerText = `${score} / ${questions.length}`;
+
+        // نص منطقي دقيق ومفصل يتماشى مع الأداء
+        if (score === 6) {
+            feedbackText.innerHTML = `<strong>🌟 أداء احترافي بامتياز (6/6)!</strong><br>
+            تحكمك في منظومة العجن (حرارة ومددة متزنة) وضبطك لآلة الفصل مع تقليل الفاقد في المرجان يعكس فهماً عميقاً لهندسة الاستخراج عالية الجودة. أنت تهيمن على المعادلة الصعبة: <em>مردودية ممتازة + جودة حسية وصحية عالية</em>.`;
+        } else if (score >= 4) {
+            feedbackText.innerHTML = `<strong>👏 أداء جيد جداً (${score}/6)!</strong><br>
+            لديك إدراك قوي لأهمية التوازن بين المردودية والجودة وتجنب عشوائية الماء والحرارة. نوصي فقط بمراجعة دقيقة لنقاط الفاقد الكامن في المخلفات الصلبة والمرجان لرفع كفاءة الاستخلاص أكثر.`;
+        } else {
+            feedbackText.innerHTML = `<strong>💡 نتيجة مقبولة (${score}/6)، تحتاج لضبط ميداني:</strong><br>
+            الاعتقاد بأن "رفع الحرارة والوقت أو إطالة عشوائية الماء ترفع المردودية" هو فخ شائع. الفاقد الحقيقي يتسرب مع المرجان والمخلفات عندما يغيب الضبط المتناغم للمنظومة. نوصي بمراجعة الحلقات والتركيز على قواعد العجن والفصل ككتلة واحدة.`;
+        }
+    }
+
+    function showReview() {
+        let reviewHtml = "<h3 style='color: var(--primary-color); text-align:center;'>مراجعة الإجابات الصحيحة والتصحيح:</h3>";
+        questions.forEach((q, idx) => {
+            const userAns = userAnswers[idx];
+            const correctAns = q.correct;
+            const isCorrect = userAns === correctAns;
+            
+            reviewHtml += `<div class="review-item ${isCorrect ? 'correct-ans' : 'wrong-ans'}">
+                <strong>السؤال ${idx + 1}: ${q.title}</strong><br>
+                <span style="color: ${isCorrect ? '#2e7d32' : '#c62828'};">
+                    إجابتك: ${userAns !== null ? q.options[userAns] : 'لم تجب'} ${isCorrect ? '✓' : '✗'}
+                </span><br>`;
+            
+            if (!isCorrect) {
+                reviewHtml += `<span style="color: #2e7d32; font-weight: bold;">الإجابة الصحيحة: ${q.options[correctAns]}</span>`;
+            }
+            reviewHtml += `</div>`;
+        });
+        reviewSection.innerHTML = reviewHtml;
+        reviewSection.style.display = 'block';
+    }
+
+    function restartQuiz() {
+        currentQuestion = 0;
+        userAnswers.fill(null);
+        resultScreen.style.display = 'none';
+        quizForm.style.display = 'block';
+        navButtons.style.display = 'flex';
+        renderQuestion();
+    }
+
+    renderQuestion();
+</script>
+
+</body>
+</html>
