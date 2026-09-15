@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاختبار الميداني: المعدات والتخزين - المحور الثاني</title>
+    <title>اختبار أونسا (المعدات والتخزين) - المحور الثاني</title>
     <style>
         :root {
             --primary-color: #2c5e3b;
@@ -13,193 +13,32 @@
             --card-bg: #ffffff;
             --border-radius: 12px;
         }
-
-        body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 750px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
-
-        .logo-container {
-            margin-bottom: 15px;
-        }
-
-        .logo-container img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--secondary-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin: 0 0 10px 0;
-            line-height: 1.4;
-        }
-
-        header p {
-            color: #666;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .question-card {
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .question-card.active {
-            display: block;
-        }
-
-        .question-title {
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option-item {
-            background: #f9fbf8;
-            border: 2px solid #e2e8f0;
-            padding: 12px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-        }
-
-        .option-item:hover {
-            border-color: var(--secondary-color);
-            background: #f1f8e9;
-        }
-
-        .option-item.selected {
-            border-color: var(--primary-color);
-            background: #e8f5e9;
-            font-weight: bold;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 20px;
-        }
-
-        button.action-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button.action-btn:hover {
-            background-color: #1e3f27;
-        }
-
-        .result-container {
-            text-align: center;
-            display: none;
-        }
-
-        .result-container h2 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-
-        .score-box {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin: 20px 0;
-            direction: ltr;
-        }
-
-        .feedback-msg {
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-            color: #444;
-            line-height: 1.6;
-            background: #f4f6f0;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: right;
-        }
-
-        .review-box {
-            text-align: right;
-            margin-top: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-
-        .review-item {
-            margin-bottom: 15px;
-            padding: 12px;
-            border-radius: 6px;
-            border-right: 5px solid #ccc;
-            background: #fff;
-        }
-
-        .review-item.correct-ans {
-            border-right-color: #558b2f;
-            background: #f1f8e9;
-        }
-
-        .review-item.wrong-ans {
-            border-right-color: #c62828;
-            background: #ffebee;
-        }
-
-        .result-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--accent-color); color: var(--text-color); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 750px; background: var(--card-bg); padding: 30px; border-radius: var(--border-radius); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        header { text-align: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 25px; }
+        .logo-container img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color); margin-bottom: 10px; }
+        h1 { color: var(--primary-color); font-size: 1.3rem; margin: 0 0 8px 0; }
+        p { color: #666; font-size: 0.95rem; margin: 0; }
+        .question-card { margin-bottom: 20px; display: none; }
+        .question-card.active { display: block; }
+        .question-title { font-size: 1.05rem; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; line-height: 1.5; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; }
+        .option-item { background: #f9fbf8; border: 2px solid #e2e8f0; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; }
+        .option-item:hover { border-color: var(--secondary-color); background: #f1f8e9; }
+        .option-item.selected { border-color: var(--primary-color); background: #e8f5e9; font-weight: bold; }
+        .btn-container { display: flex; justify-content: space-between; margin-top: 25px; border-top: 1px solid #e0e0e0; padding-top: 20px; }
+        button.action-btn, a.action-btn { background-color: var(--primary-color); color: white; border: none; padding: 12px 20px; font-size: 0.95rem; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; transition: background 0.2s; font-weight: bold; }
+        button.action-btn:hover, a.action-btn:hover { background-color: #1e3f27; }
+        .result-container { text-align: center; display: none; }
+        .score-box { font-size: 2.5rem; font-weight: bold; color: var(--secondary-color); margin: 15px 0; direction: ltr; }
+        .feedback-msg { font-size: 1rem; margin-bottom: 20px; color: #444; line-height: 1.6; background: #f4f6f0; padding: 15px; border-radius: 8px; text-align: right; }
+        .review-box { text-align: right; margin-top: 15px; max-height: 300px; overflow-y: auto; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+        .review-item { margin-bottom: 12px; padding: 10px; border-radius: 6px; border-right: 4px solid #ccc; background: #fff; font-size: 0.9rem; }
+        .review-item.correct-ans { border-right-color: #558b2f; background: #f1f8e9; }
+        .review-item.wrong-ans { border-right-color: #c62828; background: #ffebee; }
+        .result-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .row-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .row-btns .action-btn { flex: 1; min-width: 140px; }
     </style>
 </head>
 <body>
@@ -209,8 +48,8 @@
         <div class="logo-container">
             <img src="logo100.jpg" alt="شعار مجموعة التكوين والتأطير" onerror="this.src='https://i.ibb.co/6P7q9z0/logo.jpg'">
         </div>
-        <h1>🏛️ المحور الثاني: المعدات والتخزين السليم</h1>
-        <p>مجموعة التكوين والتأطير — الحلقتان 5 و 6 (أونسا 1004.20)</p>
+        <h1>🏛️ المحور الثاني (الحلقتان 5 و 6): المعدات والتخزين السليم</h1>
+        <p>مجموعة التكوين والتأطير — معايير أونسا (1004.20)</p>
     </header>
 
     <div id="quiz-form"></div>
@@ -222,72 +61,77 @@
     </div>
 
     <div class="result-container" id="result-screen">
-        <h2>نتيجة التقييم الميداني 🏆</h2>
+        <h2>نتيجة تقييم أونسا 🏆</h2>
         <div class="score-box" id="score-display">0 / 6</div>
         <div class="feedback-msg" id="feedback-text"></div>
         <div class="result-buttons">
-            <button class="action-btn" onclick="restartQuiz()">إعادة الاختبار 🔄</button>
-            <button class="action-btn" style="background-color: #558b2f;" onclick="showReview()">مراجعة الإجابات الصحيحة 📖</button>
+            <a href="index.html" class="action-btn" style="background-color: #1e3f27; font-size: 1.05rem; padding: 14px;">🏠 العودة إلى الصفحة الرئيسية للمنصة</a>
+            <div class="row-btns">
+                <a href="testqualite.html" class="action-btn" style="background-color: #d97706;">الانتقال لاختبار الجودة ➔</a>
+                <button class="action-btn" style="background-color: #558b2f;" onclick="showReview()">مراجعة الأخطاء 📖</button>
+                <button class="action-btn" style="background-color: #444;" onclick="restartQuiz()">إعادة الاختبار 🔄</button>
+            </div>
         </div>
         <div id="review-section" style="display: none;" class="review-box"></div>
     </div>
 </div>
 
 <script>
+    // تم توزيع المواقع الصحيحة عشوائياً بين العناصر (0, 1, 2)
     const questions = [
-        {
-            title: "1. ما هو الفرق الجوهري بين 'الكفاءة الميكانيكية' و'السلامة الصحية' للمعدة داخل المعصرة؟",
+        { 
+            title: "1. ما هو الفرق الجوهري بين 'الكفاءة الميكانيكية' و'السلامة الصحية' للمعدة داخل المعصرة؟", 
             options: [
-                "كلاهما مرادفان لنفس المعنى، فإذا عملت الآلة بسرعة فهي سليمة صحياً.",
-                "الآلة قد تعمل بشكل ممتاز ميكانيكياً، لكنها تشكل خطراً صحياً إذا كان جزء ملامس للزيت متضرراً، غير قابل للتنظيف، أو تتم صيانته بطريقة ملوثة.",
-                "السلامة الصحية تخص الأرضيات فقط وليس المعدات."
-            ],
-            correct: 1
+                "تعتبر السلامة الصحية خاصة بالأرضيات والجدران فقط وليس لها علاقة بالمعدات.", 
+                "الآلة قد تعمل بشكل ممتاز ميكانيكياً، لكنها تشكل خطراً صحياً وتلوث الزيت إذا كان جزء ملامس متضرراً أو غير قابل للتنظيف.", 
+                "كلاهما مرادفان تماماً لنفس المعنى القانوني."
+            ], 
+            correct: 1 
         },
-        {
-            title: "2. أثناء عملية تشحيم أو إصلاح دورية لأجزاء ميكانيكية قريبة من مسار الزيت، ما هو السلوك المخالف للسلامة الصحية؟",
+        { 
+            title: "2. أثناء عملية تشحيم أو إصلاح دورية لأجزاء ميكانيكية قريبة من مسار الزيت، ما هو السلوك المخالف للسلامة الصحية؟", 
             options: [
-                "استخدام مواد تشحيم معتمدة مخصصة للصناعات الغذائية بحذر شديد.",
-                "استعمال زيوت ميكانيكية عادية دون حماية أو عزل، مما قد يؤدي لتسربها نحو الأجزاء الملامسة للزيت.",
-                "إيقاف الآلة تماماً أثناء الصيانة."
-            ],
-            correct: 1
+                "استعمال زيوت ومواد تشحيم ميكانيكية عادية دون حماية، مما يؤدي لتسربها نحو الأجزاء الملامسة للمنتج.", 
+                "إيقاف الآلة تماماً أثناء أعمال الصيانة والإصلاح.", 
+                "استعمال مواد تشحيم معتمدة ومخصصة حصرياً للصناعات الغذائية."
+            ], 
+            correct: 0 
         },
-        {
-            title: "3. لماذا يُعد تصميم خزان تخزين الزيت 'جزءاً من إنتاج الجودة' وليس مجرد حاوية مؤقتة؟",
+        { 
+            title: "3. لماذا يُعد تصميم خزان تخزين الزيت 'جزءاً حيوياً من إنتاج الجودة' وليس مجرد حاوية مؤقتة؟", 
             options: [
-                "لانه يرفع سعر بيع الزيت تلقائياً.",
-                "لانه يحمي الزيت السليم من التلوث بالغبار، الرطوبة، الحشرات، أو بقايا الخزانات السيئة التي تفسد الجودة المحافظ عليها أثناء الاستخراج.",
-                "لانه يقلل من حجم الخزان الفيزيائي."
-            ],
-            correct: 1
+                "لأنه يساهم بشكل مباشر في رفع سعر بيع لتر الزيت في السوق.", 
+                "لأنه يقلل من المساحة الفيزيائية الإجمالية لغرفة التخزين.", 
+                "لأنه يحمي الزيت السليم المستخلص من التلوث بالغبار، الرطوبة، الحشرات، وبقايا الخزانات الفاسدة."
+            ], 
+            correct: 2 
         },
-        {
-            title: "4. أي شرط مما يلي يُعد إلزامياً في تنظيم الخزانات ومكان تخزين الزيت؟",
+        { 
+            title: "4. أي شرط مما يلي يُعد إلزامياً وصحيحاً في تنظيم الخزانات ومكان تخزين الزيت؟", 
             options: [
-                "وضع الخزانات مباشرة فوق أرضية رطبة ومكشوفة للشمس الحارقة والغبار.",
-                "أن يكون مكان التخزين نظيفاً، محمياً من الحشرات والقوارض، مع إمكانية الوصول للصيانة ووضوح هوية ومصدر كل خزان.",
-                "خلط زيوت موسميات مختلفة في خزان واحد مفتوح."
-            ],
-            correct: 1
+                "وضع الخزانات مباشرة على أرضية رطبة ومكشوفة لتقلبات الطقس.", 
+                "أن يكون مكان التخزين نظيفاً ومنظماً، محمياً من الحشرات والقوارض، مع وضوح هوية ومصدر كل خزان.", 
+                "خلط زيوت مواسم الإنتاج المختلفة في خزان واحد مفتوح لتجانس النكهات."
+            ], 
+            correct: 1 
         },
-        {
-            title: "5. ما هو الخطر الأكبر عند إهمال مراقبة الأجزاء الداخلية المخفية (كالمضخات والأنابيب والحلزونات)؟",
+        { 
+            title: "5. ما هو الخطر الأكبر الناجم عن إهمال مراقبة وتنظيف الأجزاء الداخلية المخفية (كالمضخات والحلزونات والأنابيب)؟", 
             options: [
-                "توقف المحرك الكهربائي عن العمل نهائياً.",
-                "تراكم البقايا العضوية والتأكسد الخفي الذي ينقل روائح وعيوب 'الرانخ' للزيت الجديد.",
-                "تغيير لون الهيكل الخارجي للآلة."
-            ],
-            correct: 1
+                "تراكم البقايا العضوية والتأكسد الخفي الذي ينقل روائح وعيوب 'الرانخ' للزيت الجديد.", 
+                "توقف المحرك الكهربائي الرئيسي عن العمل نهائياً.", 
+                "تغيير لون الهيكل الخارجي للآلة للون الداكن."
+            ], 
+            correct: 0 
         },
-        {
-            title: "6. ما هي القاعدة الذهبية لمنظومة الحماية بعد الاستخراج؟",
+        { 
+            title: "6. ما هي القاعدة الذهبية لمنظومة الحماية بعد الاستخراج؟", 
             options: [
-                "ملء الخزانات بعشوائية دون تنظيف مسبق.",
-                "معدات سليمة وآمنة + تخزين نظيف ومنظم ومحمي = حماية حقيقية للزيت حتى التسليم.",
-                "الاكتفاء بإغلاق باب غرفة التخزين مرة في الشهر."
-            ],
-            correct: 1
+                "الاكتفاء بإغلاق باب غرفة التخزين بإحكام مرة واحدة في الشهر.", 
+                "ملء الخزانات بعشوائية ودون أي عملية تنظيف مسبقة.", 
+                "معدات سليمة وآمنة + تخزين نظيف ومنظم ومحمي = حماية حقيقية للزيت حتى التسليم."
+            ], 
+            correct: 2 
         }
     ];
 
@@ -306,107 +150,67 @@
     function renderQuestion() {
         quizForm.innerHTML = '';
         const q = questions[currentQuestion];
-        let html = `<div class="question-card active">
-            <div class="question-title">${q.title}</div>
-            <div class="options-list">`;
-        
+        let html = `<div class="question-card active"><div class="question-title">${q.title}</div><div class="options-list">`;
         q.options.forEach((opt, idx) => {
             const isSelected = userAnswers[currentQuestion] === idx ? 'selected' : '';
             html += `<div class="option-item ${isSelected}" onclick="selectOption(${idx})">${opt}</div>`;
         });
-
         html += `</div></div>`;
         quizForm.innerHTML = html;
-
         prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
         nextBtn.innerText = currentQuestion === questions.length - 1 ? 'إرسال وعرض النتيجة' : 'التالي';
     }
 
-    function selectOption(optionIndex) {
-        userAnswers[currentQuestion] = optionIndex;
-        renderQuestion();
-    }
-
+    function selectOption(idx) { userAnswers[currentQuestion] = idx; renderQuestion(); }
     function nextQuestion() {
-        if (userAnswers[currentQuestion] === null) {
-            alert('الرجاء اختيار إجابة قبل الانتقال للسؤال التالي.');
-            return;
-        }
-
-        if (currentQuestion < questions.length - 1) {
-            currentQuestion++;
-            renderQuestion();
-        } else {
-            showResults();
-        }
+        if (userAnswers[currentQuestion] === null) { alert('الرجاء اختيار إجابة أولاً.'); return; }
+        if (currentQuestion < questions.length - 1) { currentQuestion++; renderQuestion(); }
+        else { showResults(); }
     }
-
-    function prevQuestion() {
-        if (currentQuestion > 0) {
-            currentQuestion--;
-            renderQuestion();
-        }
-    }
+    function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; renderQuestion(); } }
 
     function showResults() {
         quizForm.style.display = 'none';
         navButtons.style.display = 'none';
         resultScreen.style.display = 'block';
         reviewSection.style.display = 'none';
-
         let score = 0;
-        userAnswers.forEach((ans, idx) => {
-            if (ans === questions[idx].correct) score++;
-        });
-
+        userAnswers.forEach((ans, idx) => { if (ans === questions[idx].correct) score++; });
         scoreDisplay.innerText = `${score} / ${questions.length}`;
 
-        // نص منطقي دقيق ومفصل يتماشى مع الأداء
+        // تقييم واقعي وصارم يتماشى مع النتائج بدقة
         if (score === 6) {
-            feedbackText.innerHTML = `<strong>🌟 حارس الجودة والامتثال بامتياز (6/6)!</strong><br>
-            تفصل تماماً بين الكفاءة الميكانيكية والسلامة الصحية، وتدرك بعمق أن الخزان ليس مجرد وعاء بل صمام أمان نهائي يحمي هوية ونقاء الزيت. أداء يوافق بدقة معايير أونسا (1004.20).`;
+            feedbackText.innerHTML = `<strong>🌟 حارس الجودة والامتثال بامتياز (6/6)!</strong> تميز تام وفهم عميق للسلامة الصحية (1004.20) وفصل الكفاءة عن التلوث. أداء مشرف ومحترف.`;
         } else if (score >= 4) {
-            feedbackText.innerHTML = `<strong>👏 أداء مميز ومسؤول (${score}/6)!</strong><br>
-            لديك وعي حقيقي بأهمية نظافة الأجزاء الملامسة وحماية محيط التخزين. نوصي بتشديد الرقابة على تفاصيل صيانة المعدات المخفية وتوضيح هوية الخزانات بشكل دوري.`;
+            feedbackText.innerHTML = `<strong>👏 أداء مميز (${score}/6)!</strong> وعي حقيقي بنظافة الأجزاء الملامسة وحماية محيط التخزين.`;
+        } else if (score >= 2) {
+            feedbackText.innerHTML = `<strong>⚠️ تهاون قانوني وصحي خطر (${score}/6):</strong> الاستخلاص الجيد يذهب سدى بسبب إهمال نظافة المعدات الداخلية ومخاطر التخزين؛ هذا يضع المعصرة في مهب المخالفات والعقوبات. يُرجى التكوين والمراجعة الفورية.`;
         } else {
-            feedbackText.innerHTML = `<strong>💡 نتيجة تحتاج لمراجعة ميدانية عاجلة (${score}/6):</strong><br>
-            الاعتقاد بأن "الآلة تعمل جيداً إذن لا تلوث" أو إهمال نظافة وتنظيم الخزانات هو الفخ الأكبر بعد الاستخراج. الزيت السليم يفسد في لحظة إذا لامس سطوحاً متآكلة أو خزانات غير منظمة. نوصي بمراجعة محتوى الحلقات بتأني.`;
+            feedbackText.innerHTML = `<strong>❌ إخفاق كامل في معايير أونسا (${score}/6):</strong> هذه النتيجة كارثية تدل على جهل تام بشروط السلامة الصحية والمعدات والتخزين، وتعرض المعصرة للإغلاق والعقوبات الزجرية العاجلة.`;
         }
     }
 
     function showReview() {
-        let reviewHtml = "<h3 style='color: var(--primary-color); text-align:center;'>مراجعة الإجابات الصحيحة والتصحيح:</h3>";
+        let reviewHtml = "<h3 style='color: var(--primary-color); text-align:center;'>مراجعة الأخطاء والتصحيح:</h3>";
         questions.forEach((q, idx) => {
             const userAns = userAnswers[idx];
-            const correctAns = q.correct;
-            const isCorrect = userAns === correctAns;
-            
+            const isCorrect = userAns === q.correct;
             reviewHtml += `<div class="review-item ${isCorrect ? 'correct-ans' : 'wrong-ans'}">
-                <strong>السؤال ${idx + 1}: ${q.title}</strong><br>
-                <span style="color: ${isCorrect ? '#2e7d32' : '#c62828'};">
-                    إجابتك: ${userAns !== null ? q.options[userAns] : 'لم تجب'} ${isCorrect ? '✓' : '✗'}
-                </span><br>`;
-            
-            if (!isCorrect) {
-                reviewHtml += `<span style="color: #2e7d32; font-weight: bold;">الإجابة الصحيحة: ${q.options[correctAns]}</span>`;
-            }
-            reviewHtml += `</div>`;
+                <strong>س${idx+1}: ${q.title}</strong><br>
+                إجابتك: ${userAns !== null ? q.options[userAns] : 'لم تجب'} ${isCorrect ? '✓' : '✗'}<br>
+                ${!isCorrect ? `<span style="color:#2e7d32;font-weight:bold;">الصحيح: ${q.options[q.correct]}</span>` : ''}
+            </div>`;
         });
         reviewSection.innerHTML = reviewHtml;
         reviewSection.style.display = 'block';
     }
 
     function restartQuiz() {
-        currentQuestion = 0;
-        userAnswers.fill(null);
-        resultScreen.style.display = 'none';
-        quizForm.style.display = 'block';
-        navButtons.style.display = 'flex';
+        currentQuestion = 0; userAnswers.fill(null);
+        resultScreen.style.display = 'none'; quizForm.style.display = 'block'; navButtons.style.display = 'flex';
         renderQuestion();
     }
-
     renderQuestion();
 </script>
-
 </body>
 </html>
